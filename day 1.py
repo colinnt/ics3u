@@ -6,3 +6,18 @@ n = 7
 print(n+5)
 print(f'5 is less than {n-1} which is less than {n}')
 print(5, "is less than", n-1, "which is less than", n)
+
+pi = 62.83185 / (2*10)
+print(f'The value of pi to 5 decimal places is {pi:.5f}')
+
+value = 10/3
+print(f'value --> {value:.1f}')
+
+name = 'Avery'
+print(f'--{name: >20} --')
+
+name == "Sam"
+print(f'--{name: ^20} --')
+
+name = 'Ali'
+print(f'--{name: <20} --')
