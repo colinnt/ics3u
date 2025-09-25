@@ -14,10 +14,22 @@ value = 10/3
 print(f'value --> {value:.1f}')
 
 name = 'Avery'
-print(f'--{name: >20} --')
+print(f'--{name: ^20} --')
 
 name == "Sam"
 print(f'--{name: ^20} --')
 
 name = 'Ali'
-print(f'--{name: <20} --')
+print(f'--{name:^20} --')
+
+print (6*(1-2)+3)
+print (6*1-(2+3))
+print (6*(1-2+3))
+
+age = int(input('Enter your age'))
+age = age+1
+print(f'Your age next year is {age}')
+
+print(10/3)
+print (10//3)
+print(10%3)
