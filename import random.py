@@ -20,16 +20,17 @@ n5 = random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
 print(f"{n1}{n2}{n3}{n4}{n5}")
 
 #Generate a randomized symmetrical drawing in the Rorschach inkblot style
-import random
+
 
 b_dot = '⚫'
-b_dot = '⚪'
+w_dot = '⚪'
 
 for i in range(20):
     line = ''
     for j in range(20):
         if random.randint(0,1) == 1:
-            line += b_dot
+            line += w_dot
+        
         else:
             line += '  '
     print(line + line[::-1])
@@ -44,6 +45,19 @@ for i in range(20):
 # 30% chance to choose word "ahlan"
 words = ['hello'] * 10 + ['salut'] * 20 + ['hola'] * 10 + ['ni hao'] * 30 + ['ahlan'] * 30
 print(random.choice(words))
+print(random.choice(words))
+print(random.choice(words))
+print(random.choice(words))
+print(random.choice(words))
+print(random.choice(words))
+print(random.choice(words))
+print(random.choice(words))
+print(random.choice(words))
+
+
+
+            
+
 
 
 # Generate a grid with random treasure placed.
