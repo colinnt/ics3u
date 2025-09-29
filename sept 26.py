@@ -144,3 +144,19 @@ def print_grid(rows, cols):
     print(horizontal)
 
 print_grid(3, 3)
+
+#Type the following line of code.  What information does the function len  calculate?
+
+name = "Aaron"
+print (len(name))
+
+#prints number of letters
+
+#Write a program that prints a grid of symbols around a name. Challenge is that your program should work for any name of any length without changing the program!
+
+name = input("Please enter your name")
+name_length = len(name)
+dashes = '-' * (name_length + 2)
+print (dashes)
+print ("|" + name + "|" )
+print (dashes)
