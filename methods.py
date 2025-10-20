@@ -110,8 +110,29 @@ def main():
     days = random.randint(0, 10)
     hours = random.randint(0, 23)
     print(f"Randomly generated time: {days} days, {hours} hours")
-days_left, hours_left = convert_days_hours(hours)
+    total_hours = days * 24 + hours
+    days_left, hours_left = convert_days_hours(total_hours)
+    print(f"Converted back to days and hours: {days_left} days, {hours_left} hours")
 
+main()
+
+#Write a function called is_even(number) that returns True if the number is even and False if the number is not.
+#*** This question requires a conditional which is our next lesson. If you can finish it, awesome!
+def is_even(num):
+    if num % 2 == 0:
+        return True
+    else:
+        return False
+
+def main():
+
+    user_num = int(input("Please enter a number"))
+
+    if is_even(user_num) == True:
+        print(f'{user_num} is even')
+
+    else:
+        print(f'{user_num} is odd')
 
 main()
 
