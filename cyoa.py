@@ -1,6 +1,5 @@
 import time
 import random
-import sys
 
 
 game = True
@@ -8,10 +7,9 @@ gun = False
 map = False
 compass = False
 
-
 def paths():
     global game, gun, map, compass
-    print("You find yourself at a crossroads. Do you want to go left or right?")
+    print("\nYou find yourself at a crossroads. Do you want to go left or right?")
     choice = input("Type 'left' or 'right': ").lower()
 
     if choice == 'left':
@@ -21,6 +19,7 @@ def paths():
     else:
         print("Invalid choice.")
         paths()
+
 def left_path():
     global gun
     events = [
@@ -47,10 +46,24 @@ def right_path():
         "You find a note: 'Don’t go into the cave.'",
         "You find nothing but silence and wind."
     ]
-    print(random.choice(discoveries))
-    time.sleep(1)
-    print("You can head back to the crossroads.")
-    paths()
+    event = random.choice(discoveries)
+    print(event)
+    
+    if event == "You find a note: 'Don’t go into the cave.'":
+        note()
+    else:
+        paths()
+
+def note():
+    print("Do you still want to enter the cave? (yes/no)")
+    choice = input("> ").lower()
+    if choice == 'yes':
+        cave_path()
+    elif choice == 'no':
+        paths()
+    else:
+        print("Invalid choice.")
+        note()
 
 def boat_path():
     print("You take the boat and drift down the river...")
@@ -58,21 +71,25 @@ def boat_path():
     outcomes = [
         "The current speeds up—you see rapids ahead!",
         "You see a waterfall in the distance!",
-        "A thick fog rolls in—you can’t see the shore."
+        "A thick fog rolls in—you can’t see the shore.",
     ]
     print(random.choice(outcomes))
     print("Do you want to jump out or stay in?")
-    choice = input("> ").lower()
+    pick = input("> ").lower()
 
-    if choice == 'jump out':
+    if pick == "jump out":
         print("You swim to shore, exhausted but alive.")
         paths()
-    elif choice == 'stay in':
+        return
+    elif pick == "stay in":
         print("You crash into rocks but manage to crawl out of the water.")
-        paths()
+        village()
+        return
     else:
         print("You hesitate and the river takes you downstream.")
         paths()
+        return
+
 
 def bridge_path():
     print("You cross the bridge and find a cave.")
@@ -92,25 +109,75 @@ def bridge_path():
     else:
         print("Invalid choice.")
         bridge_path()
+def village():
+    global game, map, compass
+    print("You arrive at a small village.")
+    choice = input("Do you want to use the map or compass? ").lower()
+    if choice == "map":
+        print("You use the map but you can't find your way out.")
+        game = False
+        print("Game Over")
+    elif choice == "compass":
+        print("You use the compass to navigate safely out of the area.")
+        game = False
+        print("You Win!😤")
+    else:
+        print("Invalid choice.")
+        village()
+def flying():
+    global game
+    time_val = random.randint(0, 20)
+    print("The bat takes you flying")
+    if time_val < 10:
+        print("You enjoy a scenic flight and safely land back on the ground.")
+        village()
+    elif 10 < time_val < 20:
+        print("The bat flies into a storm and you fall to your death.")
+        game = False
+        print("Game Over")
 
 def cave_path():
+    global stick
     print("You walk into the cave. You hear dripping water echoing in the dark.")
     findings = [
         "You find a skeleton holding a key.",
         "You find a small chest, but it’s locked.",
-        "You find strange carvings on the walls."
+        "You find strange carvings on the walls.",
     ]
     print(random.choice(findings))
-    print("Do you want to explore deeper or leave?")
+    print("Do you want to explore deeper or leave? (explore deeper/leave)")
     choice = input("> ").lower()
- 
-    if choice == 'explore deeper':
-        print("You find a hidden tunnel leading somewhere new...")
-        paths()
-    elif choice == 'leave':
+    if choice == "explore deeper":
+        print("You find a hidden tunnel leading somewhere new with a stick")
+        stick = True
+        explore_deeper()
+
+    elif choice == "leave":
         paths()
     else:
         print("You stand still, unsure.")
         cave_path()
+
+def explore_deeper():
+    global stick
+    print("You venture deeper into the cave and discover a giant bat.")
+    print("Do you want to fight it with your stick?")
+    choice = input("> ").lower()
+    if choice == "yes" and stick == True:
+        print("You bravely fight the bat with your stick and emerge victorious!")
+        flying()
+
+    elif choice == "yes" and stick == False:
+        print(
+            "You try to fight the bat, but without a weapon, you are quickly overwhelmed."
+        )
+        print("You manage to escape the cave, shaken but alive.")
+        paths()
+    elif choice == "no":
+        print("You decide to make friends with the bat. It takes you flying!")
+        flying()
+
+    
+    paths()
 
 paths()
