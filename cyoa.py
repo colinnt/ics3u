@@ -54,8 +54,6 @@ def left_path():
         "You find a flare gun on the ground. You save it for later.",
         "You spot footprints near the mud. Someone has been here recently.",
         "A small animal darts across your path and disappears into the bushes.",
-        "You discover an old campsite with useful supplies.",
-        "You hear strange noises coming from deeper in the woods."
     ]
     
 
@@ -68,10 +66,10 @@ def left_path():
     discoveries_made += 1
     
 
-    if event == "You find a healing herb that restores some energy!":
+    if event == "You find a healing herb that restores health!":
         energy += 20
         print(f"Your energy increases! (Energy: {energy})")
-    elif event == "You discover a hidden cache of supplies!":
+    elif event == "You discover a hidden cache of medical equipment!":
         health += 15
         print(f"Your health improves! (Health: {health})")
     
@@ -82,7 +80,7 @@ def left_path():
     time.sleep(1)
 
     river_descriptions = [
-        "The water flows swiftly downstream.",
+        "The water flows downstream.",
         "The river looks calm but deep.",
         "Mist rises from the cold water.",
         "You can hear the sound of rushing water."
@@ -282,7 +280,7 @@ def village():
         game = False
         print("Game Over")
     elif choice == "compass":
-        print("You use the compass to navigate safely out of the area.")
+        print("You use the compass to find your way out of the area.")
         game = False
         print("You Win!😤")
     else:
@@ -293,7 +291,7 @@ def flying():
     time_val = random.randint(0, 20)
     print("The bat takes you flying")
     if time_val < 10:
-        print("You enjoy a scenic flight and safely land back on the ground.")
+        print("You enjoy a scenic flight and land back on the ground.")
         village()
     elif 10 < time_val < 20:
         print("The bat flies into a storm and you fall to your death.")
@@ -302,7 +300,7 @@ def flying():
 
 def cave_path():
     global stick
-    print("You walk into the cave. You hear dripping water echoing in the dark.")
+    print("You walk into the cave. You hear water dripping in the dark.")
     findings = [
         "You find a skeleton holding a key.",
         "You find a small chest, but it’s locked.",
@@ -324,7 +322,7 @@ def cave_path():
 
 def explore_deeper():
     global stick
-    print("You venture deeper into the cave and discover a giant bat.")
+    print("You go deeper into the cave and discover a giant bat.")
     print("Do you want to fight it with your stick?")
     choice = input("> ").lower()
     if choice == "yes" and stick == True:
